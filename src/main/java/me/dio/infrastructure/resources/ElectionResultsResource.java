@@ -24,7 +24,7 @@ public class ElectionResultsResource {
     public Multi<List<Election>> results() {
         return Multi.createFrom()
                 .ticks()
-                .every(Duration.ofSeconds(60))
+                .every(Duration.ofSeconds(10))
                 .onItem()
                 .transformToMultiAndMerge(n -> electionManagementService.getElections().toMulti());
    }
